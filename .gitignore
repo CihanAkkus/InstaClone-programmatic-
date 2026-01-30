@@ -1,0 +1,8 @@
+# Güvenlik (Firebase Config)
+GoogleService-Info.plist
+
+# Xcode Kullanıcı Ayarları (Sürekli değişen dosya)
+*.xcuserstate
+
+# Mac Sistem Dosyası
+.DS_Store
