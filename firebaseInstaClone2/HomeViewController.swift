@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var userEmailArray = [String]( )
@@ -120,6 +121,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func likeButtonTapped(_ sender: UIButton  ){
         
         let tappedIndex = sender.tag
+        
+        let documentId = documentIdArray[tappedIndex]
+        
+        let firestoreDatabase = Firestore.firestore()
+        
+        firestoreDatabase.collection("Posts").document(documentId).updateData(["Likes" : FieldValue.increment(Int64(1))]){
+            
+            error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }else{
+                print("success")
+            }
+        }
         
         
     }
